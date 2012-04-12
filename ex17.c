@@ -107,13 +107,13 @@ void Database_set(struct Connection *conn, int id, const char *name, const char 
     if (addr->set) die("Already set, delete it first");
 
     addr->set = 1;
-    // WARNING: bug, read the "How To Break It" and fix this
     char *res = strncpy(addr->name, name, MAX_DATA);
-    // demonstrate the strncpy bug
     if (!res) die("Name copy failed");
+    res[MAX_DATA - 1] = '\0';
 
     res = strncpy(addr->email, email, MAX_DATA);
     if (!res) die("Email copy failed");
+    res[MAX_DATA - 1] = '\0';
 }
 
 void Database_get(struct Connection *conn, int id)
