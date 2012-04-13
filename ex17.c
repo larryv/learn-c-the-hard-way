@@ -217,6 +217,19 @@ void Database_list(struct Connection *conn)
     }
 }
 
+void Database_find(struct Connection *conn, const char *string)
+{
+    struct Database *db = conn->db;
+    struct Address *addr;
+    int match;
+
+    for (addr = db->rows; addr < db->rows + db->max_rows; ++addr) {
+        match = strstr(addr->name, string) || strstr(addr->email, string);
+        if (addr->set && match)
+            Address_print(addr);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     if (argc < 3)
@@ -263,8 +276,15 @@ int main(int argc, char *argv[])
     case 'l':
         Database_list(conn);
         break;
+
+    case 'f':
+        if (argc < 4) die("Need string to search for.", conn);
+
+        Database_find(conn, argv[3]);
+        break;
+
     default:
-        die("Invalid action, only: c=create, g=get, s=set, d=del, l=list", conn);
+        die("Invalid action, only: c=create, g=get, s=set, d=del, l=list, f=find", conn);
     }
 
     Database_close(conn);
