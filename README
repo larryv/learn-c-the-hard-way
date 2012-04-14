@@ -1,0 +1,16 @@
+These are implementations of some of the more interesting exercises from
+“Learn C The Hard Way”, by Zed Shaw. These include:
+
+    ex17: A very simple database. [Chapter 18]
+
+I made some changes of my own accord; others were “extra credit” changes
+suggested in the book. Commits for the latter type of changes are suffixed
+with the matching exercise. For instance, “[18.4.7]” indicates that those
+changes were made for the 7th part of section 4 of chapter 18.
+
+Run “make ex17” to build a single program, replacing “ex17” as desired. Or
+run “make all” to build everything, and “make clean” to clean up. The
+makefile assumes GCC is in ${PATH}.
+
+As of 13 April 2012, an alpha release of “Learn C The Hard Way” is
+available at http://c.learncodethehardway.org/.
