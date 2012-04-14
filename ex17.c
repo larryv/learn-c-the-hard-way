@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <ctype.h>
+
+#define MIN(x, y) ((x) < (y) ? (x) : (y))
+#define MAX(x, y) ((x) > (y) ? (x) : (y))
 
 struct Address {
     int id;
@@ -224,6 +228,9 @@ void Database_find(const char *string)
     }
 }
 
+int is_valid_ref(char *);
+int is_valid_range(const char *);
+
 int main(int argc, char *argv[])
 {
     if (argc < 3)
@@ -232,11 +239,41 @@ int main(int argc, char *argv[])
     char *filename = argv[1];
     char action = argv[2][0];
     Database_open(filename, action);
-    int id = 0;
 
-    if (argc > 3) id = atoi(argv[3]);
-    if (action != 'c' && id >= conn.db->max_rows)
-        die("There's not that many records.");
+    long id, id_start, id_end;
+
+    /* Check validity of arguments */
+    if (argc > 3) {
+        switch (action) {
+        case 'c':
+            if ((argc >= 4 && !is_valid_ref(argv[3])) ||
+                    (argc >= 5 && !is_valid_ref(argv[4])))
+                die("Invalid size parameters.");
+            break;
+        case 'g':   /* g and d have the same arg requirements */
+        case 'd':
+            if (strchr(argv[3], '-')) {
+                if (!is_valid_range(argv[3]))
+                    die("Invalid id range.");
+                sscanf(argv[3], "%ld-%ld", &id_start, &id_end);
+            } else {
+                if (!is_valid_ref(argv[3]))
+                    die("Invalid id.");
+                id_start = id_end = strtol(argv[3], NULL, 10);
+            }
+            id_start = MAX(id_start, 0);
+            id_end = MIN(id_end, conn.db->max_rows);
+            break;
+        case 's':
+            if (!is_valid_ref(argv[3]))
+                die("Invalid id.");
+            id = MIN(strtol(argv[3], NULL, 10), conn.db->max_rows);
+            break;
+        default:    /* for actions that don't take ids or ranges */
+            break;
+        }
+    }
+
     long max_data, max_rows;
 
     switch (action) {
@@ -250,7 +287,8 @@ int main(int argc, char *argv[])
     case 'g':
         if (argc < 4) die("Need an id or id range to get.");
 
-        Database_get(id);
+        for (id = id_start; id <= id_end; ++id)
+            Database_get(id);
         break;
 
     case 's':
@@ -263,7 +301,8 @@ int main(int argc, char *argv[])
     case 'd':
         if (argc < 4) die("Need id or id range to delete.");
 
-        Database_delete(id);
+        for (id = id_start; id <= id_end; ++id)
+            Database_delete(id);
         Database_write();
         break;
 
@@ -284,4 +323,21 @@ int main(int argc, char *argv[])
     Database_close();
 
     return 0;
+}
+
+int is_valid_ref(char *arg)
+{
+    do {
+        if (!isdigit(*arg))
+            return 0;
+    } while (*++arg);
+    return 1;
+}
+
+int is_valid_range(const char *arg)
+{
+    long a, b;
+    if (sscanf(arg, "%ld-%ld", &a, &b) != 2 || a > b)
+        return 0;
+    return 1;
 }
