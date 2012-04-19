@@ -1,2 +1,5 @@
 # Debugging info
 *.dSYM/
+
+# Submakefiles for computing dependencies
+*.d
