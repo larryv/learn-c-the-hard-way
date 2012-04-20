@@ -1,5 +1,5 @@
 CC := gcc
-CFLAGS := -Wall -g -std=c99
+CFLAGS := -Wall -g -std=c99 $(DEFS)
 
 ex := $(patsubst %.c,%,$(wildcard ex*.c))
 obj := $(patsubst %.c,%.o,$(wildcard *.c))
