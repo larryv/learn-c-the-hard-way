@@ -6,7 +6,7 @@ obj := $(patsubst %.c,%.o,$(wildcard *.c))
 
 all: $(ex)
 
-ex19: object.o
+ex19: object.o game.o
 
 clean:
 	rm -f $(ex)
