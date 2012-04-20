@@ -139,8 +139,20 @@ int Map_init(void *self)
     Room *arena = NEW(Room, "The arena, with the minotaur");
     Room *kitchen = NEW(Room, "Kitchen, you have the knife now");
 
+    /* extra credit: add more rooms */
+    Room *dungeon = NEW(Room, "The dungeon, with the chimera");
+    Room *keep = NEW(Room, "The keep, with the hydra");
+    Room *pantry = NEW(Room, "The overflowing pantry");
+    Room *courtyard = NEW(Room, "The beautiful courtyard, with the troll");
+    Room *garden = NEW(Room, "The fertile garden");
+
     /* put the bad guy in the arena */
     arena->bad_guy = NEW(Monster, "The evil minotaur");
+
+    /* extra credit: add more bad guys */
+    dungeon->bad_guy = NEW(Monster, "the vicious chimera");
+    keep->bad_guy = NEW(Monster, "the deadly hydra");
+    courtyard->bad_guy = NEW(Monster, "the ruthless troll");
 
     /* set up the map rooms */
     hall->north = throne;
@@ -151,6 +163,21 @@ int Map_init(void *self)
 
     arena->east = throne;
     kitchen->west = throne;
+
+    arena->north = dungeon;
+    dungeon->south = arena;
+
+    throne->north = keep;
+    keep->south = throne;
+
+    kitchen->south = pantry;
+    pantry->north = kitchen;
+
+    hall->south = courtyard;
+    courtyard->north = hall;
+
+    kitchen->east = garden;
+    garden->west = kitchen;
 
     /* start the map and the character off in the hall */
     map->start = hall;
