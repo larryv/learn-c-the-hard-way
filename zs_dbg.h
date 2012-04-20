@@ -12,8 +12,8 @@
 #else
 #define debug(M, ...) \
     do { \
-        fprintf(stderr, "DEBUG %s:%d " M "\n", \
-                __FILE__, __LINE__, ##__VA_ARGS__); \
+        fprintf(stderr, "DEBUG %s:%d [%s] " M "\n", \
+                __FILE__, __LINE__, __func__, ##__VA_ARGS__); \
     } while (0)
 #endif
 
@@ -21,20 +21,20 @@
 
 #define log_err(M, ...) \
     do { \
-        fprintf(stderr, "[ERROR] (%s:%d: errno: %s) " M "\n", \
-                __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__); \
+        fprintf(stderr, "[ERROR] (%s:%d [%s]: errno: %s) " M "\n", \
+                __FILE__, __LINE__, __func__, clean_errno(), ##__VA_ARGS__); \
     } while (0)
 
 #define log_warn(M, ...) \
     do { \
-        fprintf(stderr, "[WARN] (%s:%d: errno: %s) " M "\n", \
-                __FILE__, __LINE__, clean_errno(), ##__VA_ARGS__); \
+        fprintf(stderr, "[WARN] (%s:%d [%s]: errno: %s) " M "\n", \
+                __FILE__, __LINE__, __func__, clean_errno(), ##__VA_ARGS__); \
     } while (0)
 
 #define log_info(M, ...) \
     do { \
-        fprintf(stderr, "[INFO] (%s:%d) " M "\n", \
-                __FILE__, __LINE__, ##__VA_ARGS__); \
+        fprintf(stderr, "[INFO] (%s:%d [%s]) " M "\n", \
+                __FILE__, __LINE__, __func__, ##__VA_ARGS__); \
     } while (0)
 
 #define check(A, M, ...) \
