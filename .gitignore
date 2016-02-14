@@ -1,6 +1,6 @@
-# Debugging info
+# Compilation products.
 *.dSYM/
 *.o
 
-# Submakefiles for computing dependencies
+# Auxiliary makefiles.
 *.d
