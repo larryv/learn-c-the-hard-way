@@ -1,0 +1,12 @@
+# Guess textuality by default.
+* text=auto
+
+# Markdown is text.
+*.md text
+
+# Makefiles are text.
+[Mm]akefile text
+GNUmakefile text
+
+# C source is text.
+*.[ch] text
