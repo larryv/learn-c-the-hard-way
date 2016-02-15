@@ -15,7 +15,7 @@ Building the code requires Make and a reasonable C compiler at `cc`.
     $ make all
 -->
 
-If desired, a custom executable and options can be specified explicitly.
+If desired, a custom compiler and options can be specified explicitly.
 
     $ make CC=/opt/local/bin/clang-3.7 ex31
     $ make CFLAGS=-Weverything ex2
