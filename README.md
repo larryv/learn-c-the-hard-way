@@ -1,10 +1,10 @@
 # Exercises from _Learn C the Hard Way_ #
 
-These are implementations of exercises from Zed Shaw&rsquo;s [_Learn
-C the Hard Way_, 1st edition][informit] (print ISBN 978-0-321-88492-3,
-ebook ISBN 978-0-13-312441-5). Page numbers in files and commit messages
-are for the print/PDF versions. As of 14&nbsp;February 2016, an [older
-beta edition][online] is freely available online, although it differs
+These are implementations of exercises from Zed Shaw’s [_Learn C the
+Hard Way_, 1st edition][informit] (print ISBN 978-0-321-88492-3, ebook
+ISBN 978-0-13-312441-5). Page numbers in files and commit messages are
+for the print/PDF versions. As of 14 February 2016, an [older beta
+edition][online] is freely available online, although it differs
 somewhat from the published book.
 
 Building the code requires Make and a reasonable C compiler at `cc`.
