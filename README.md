@@ -2,8 +2,12 @@
 
 These are implementations of exercises from Zed Shaw&rsquo;s [_Learn
 C the Hard Way_, 1st edition][informit] (print ISBN 978-0-321-88492-3,
-ebook ISBN 978-0-13-312441-5). Building the code requires Make and
-a reasonable C compiler at `cc`.
+ebook ISBN 978-0-13-312441-5). Page numbers in files and commit messages
+are for the print/PDF versions. As of 14 February 2016, an [older beta
+edition][online] of _Learn C the Hard Way_ is freely available online,
+although it differs somewhat from the published book.
+
+Building the code requires Make and a reasonable C compiler at `cc`.
 
     $ make ex17
     $ make ex5 ex29 ex43
@@ -20,10 +24,6 @@ Deleting build products works as one might expect.
 
     $ make clean
 -->
-
-As of 14 February 2016, an [older beta edition][online] of _Learn C the
-Hard Way_ is freely available online, although it differs somewhat from
-the published book.
 
   [informit]: http://www.informit.com/store/learn-c-the-hard-way-practical-exercises-on-the-computational-9780321884923
     ("Learn C the Hard Way" on InformIT)
