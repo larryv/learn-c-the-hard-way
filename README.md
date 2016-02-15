@@ -13,6 +13,7 @@ Building the code requires Make and a reasonable C compiler at `cc`.
     $ make ex5 ex29 ex43
 <!--
     $ make all
+-->
 
 If desired, a custom executable and options can be specified explicitly.
 
@@ -20,6 +21,7 @@ If desired, a custom executable and options can be specified explicitly.
     $ make CFLAGS=-Weverything ex2
     $ make CC=gcc CFLAGS=-std=gnu99 ex47
 
+<!--
 Deleting build products works as one might expect.
 
     $ make clean
