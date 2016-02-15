@@ -7,6 +7,7 @@ a reasonable C compiler at `cc`.
 
     $ make ex17
     $ make ex5 ex29 ex43
+<!--
     $ make all
 
 If desired, a custom executable and options can be specified explicitly.
@@ -18,6 +19,7 @@ If desired, a custom executable and options can be specified explicitly.
 Deleting build products works as one might expect.
 
     $ make clean
+-->
 
 As of 14 February 2016, an [older beta edition][online] of _Learn C the
 Hard Way_ is freely available online, although it differs somewhat from
