@@ -21,11 +21,9 @@ If desired, a custom compiler and options can be specified explicitly.
     $ make CFLAGS=-Weverything ex2
     $ make CC=gcc CFLAGS=-std=gnu99 ex47
 
-<!--
 Deleting build products works as one might expect.
 
     $ make clean
--->
 
   [informit]: http://www.informit.com/store/learn-c-the-hard-way-practical-exercises-on-the-computational-9780321884923
     ("Learn C the Hard Way" on InformIT)
