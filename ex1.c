@@ -13,5 +13,10 @@ int main(int argc, char *argv[])
     // this is also a comment
     printf("You are %d miles away.\n", distance);
 
+    // LCTHW extra credit
+    printf("argc = %d\n", argc);
+    printf("something more complex than \"%s\"\n", "hello world");
+    printf("\"%s\" was written by %s.\n", "Learn C the Hard Way", "Zed Shaw");
+
     return 0;
 }
