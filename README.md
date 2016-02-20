@@ -11,9 +11,7 @@ Building the code requires Make and a reasonable C compiler at `cc`.
 
     $ make ex17
     $ make ex5 ex29 ex43
-<!--
     $ make all
--->
 
 If desired, a custom compiler and options can be specified explicitly.
 
