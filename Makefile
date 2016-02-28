@@ -21,7 +21,7 @@ CFLAGS += -Wall -g
 
 .PHONY: all clean
 
-all: ex1
+all: ex1 ex3
 
 clean:
-	rm -fR ex1 ex1.dSYM
+	rm -fR ex1 ex1.dSYM ex3 ex3.dSYM
