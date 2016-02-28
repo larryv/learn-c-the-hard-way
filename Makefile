@@ -24,4 +24,4 @@ CFLAGS += -Wall -g
 all: ex1
 
 clean:
-	rm -f ex1
+	rm -fR ex1 ex1.dSYM
