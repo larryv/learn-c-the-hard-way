@@ -13,9 +13,6 @@
 # Never read SHELL from the environment. [*]
 SHELL = /bin/sh
 
-# Clear out unnecessary suffix rules. [*]
-.SUFFIXES:
-.SUFFIXES: .c
 
 CFLAGS += -Wall -g
 
