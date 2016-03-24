@@ -8,10 +8,13 @@
 int main(int argc, char *argv[])
 {
     int i = 0;
+
+    printf("Nonnegative, ascending:");
     while (i < 25) {
-        printf("%d", i);
+        printf(" %d", i);
         i++;
     }
 
+    printf("\n");
     return 0;
 }
