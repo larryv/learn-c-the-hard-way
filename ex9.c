@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     int i = 0;
 
     printf("Nonnegative, ascending:");
-    while (i < 25) {
+    while (i < 10) {
         printf(" %d", i);
         i++;
     }
