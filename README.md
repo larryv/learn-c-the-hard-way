@@ -7,7 +7,7 @@ for the print/PDF versions. As of 14 February 2016, an [older beta
 edition][online] is freely available online, although it differs
 somewhat from the published book.
 
-Building the code requires Make and a reasonable C compiler at `cc`.
+Building the code requires Make and a reasonable C99 compiler at `cc`.
 
     $ make ex17
     $ make ex5 ex29 ex43
