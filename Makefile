@@ -11,7 +11,7 @@
 # (http://www.gnu.org/software/make/manual/html_node/Makefile-Basics.html).
 SHELL := /bin/sh
 
-CFLAGS += -Wall -g
+CFLAGS := -Wall -g
 
 exercises := 1 3 7 8 9
 exercises := $(exercises:%=ex%)
