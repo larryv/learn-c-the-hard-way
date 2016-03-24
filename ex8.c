@@ -9,10 +9,18 @@ int main(int argc, char *argv[])
 {
     int i = 0;
 
-    if (argc == 2) {
+    if (argc < 2) {
+        printf("You have no arguments. You suck.\n");
+    } else if (argc == 2) {
         printf("You only have one argument. You suck.\n");
-    } else if (argc > 2 && argc < 5) {
-        printf("Here's your arguments:\n");
+    } else if (argc < 12) {
+        // If argc is odd, then the number of user-provided args is
+        // even, and vice versa.
+        if (argc % 2 == 1) {
+            printf("You provided an even number of arguments:\n");
+        } else {
+            printf("You provided an odd number of arguments:\n");
+        }
 
         printf("%s", argv[1]);
         for (i = 2; i < argc; i++) {
