@@ -17,43 +17,33 @@ int main(int argc, char *argv[])
     for (i = 0; argv[1][i] != '\0'; i++) {
         char letter = argv[1][i];
 
+        printf("argv[1][%d]: '%c' is ", i, letter);
         switch (letter) {
             case 'a':
             case 'A':
-                printf("%d: 'A'\n", i);
-                break;
-
             case 'e':
             case 'E':
-                printf("%d: 'E'\n", i);
-                break;
-
             case 'i':
             case 'I':
-                printf("%d: 'I'\n", i);
-                break;
-
             case 'o':
             case 'O':
-                printf("%d: 'O'\n", i);
-                break;
-
             case 'u':
             case 'U':
-                printf("%d: 'U'\n", i);
+                printf("a vowel");
                 break;
 
             case 'y':
             case 'Y':
                 if (i > 2) {
                     // it's only sometimes Y
-                    printf("%d: 'Y'\n", i);
+                    printf("a vowel");
                 }
                 break;
 
             default:
-                printf("%d: %c is not a vowel\n", i, letter);
+                printf("not a vowel");
         }
+        printf("\n");
     }
 
     return 0;
