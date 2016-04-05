@@ -3,6 +3,7 @@
     Prints each of its arguments' letters and whether it's a vowel.
 */
 
+#include <ctype.h>
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -20,22 +21,16 @@ int main(int argc, char *argv[])
     for (i = 1; i < argc; i++) {
         for (j = 0, letter = argv[i][j]; letter != '\0'; letter = argv[i][++j]) {
             printf("argv[%d][%d]: '%c' is ", i, j, letter);
-            switch (letter) {
+            switch (tolower(letter)) {
                 case 'a':
-                case 'A':
                 case 'e':
-                case 'E':
                 case 'i':
-                case 'I':
                 case 'o':
-                case 'O':
                 case 'u':
-                case 'U':
                     printf("a vowel");
                     break;
 
                 case 'y':
-                case 'Y':
                     if (j > 2) {
                         // it's only sometimes Y
                         printf("a vowel");
