@@ -15,11 +15,10 @@ int main(int argc, char *argv[])
 
     int i = 0;
     int j = 0;
+    char letter = '\0';
 
     for (i = 1; i < argc; i++) {
-        for (j = 0; argv[i][j] != '\0'; j++) {
-            char letter = argv[i][j];
-
+        for (j = 0, letter = argv[i][j]; letter != '\0'; letter = argv[i][++j]) {
             printf("argv[%d][%d]: '%c' is ", i, j, letter);
             switch (letter) {
                 case 'a':
