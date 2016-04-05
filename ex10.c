@@ -40,8 +40,9 @@ int main(int argc, char *argv[])
                     if (j > 2) {
                         // it's only sometimes Y
                         printf("a vowel");
+                        break;
                     }
-                    break;
+                    // fallthrough
 
                 default:
                     printf("not a vowel");
