@@ -3,14 +3,16 @@
     Print each argument's letters and their decimal representations.
 */
 
-#include <stdio.h>
 #include <ctype.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
 
-void print_letters(char arg[])
+void print_letters(char arg[], size_t len)
 {
     int i = 0;
 
-    for (i = 0; arg[i] != '\0'; i++) {
+    for (i = 0; i < len; i++) {
         char ch = arg[i];
 
         if (isalpha(ch) || isblank(ch)) {
@@ -26,7 +28,7 @@ void print_arguments(int argc, char *argv[])
     int i = 0;
 
     for (i = 0; i < argc; i++) {
-        print_letters(argv[i]);
+        print_letters(argv[i], strlen(argv[i]));
     }
 }
 
