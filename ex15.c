@@ -3,6 +3,7 @@
     Print two arrays using several methods of iteration.
 */
 
+#include <stddef.h>
 #include <stdio.h>
 
 int main(int argc, char *argv[])
@@ -15,8 +16,8 @@ int main(int argc, char *argv[])
     };
 
     // safely get the size of ages
-    int count = sizeof(ages) / sizeof(int);
-    int i = 0;
+    size_t count = sizeof(ages) / sizeof(int);
+    size_t i = 0;
 
     // first way using indexing
     printf("--- Index notation with arrays (forwards) ---\n");
@@ -24,8 +25,8 @@ int main(int argc, char *argv[])
         printf("%s has %d years alive.\n", names[i], ages[i]);
     }
     printf("\n--- Index notation with arrays (backwards) ---\n");
-    for (i = count - 1; i >= 0; i--) {
-        printf("%s has %d years alive.\n", names[i], ages[i]);
+    for (i = count; i > 0; i--) {
+        printf("%s has %d years alive.\n", names[i - 1], ages[i - 1]);
     }
 
     // set up the pointers to the start of the arrays
@@ -39,9 +40,9 @@ int main(int argc, char *argv[])
                 *(cur_name + i), *(cur_age + i));
     }
     printf("\n--- Offsets with pointer arithmetic (backwards) ---\n");
-    for (i = count - 1; i >= 0; i--) {
+    for (i = count; i > 0; i--) {
         printf("%s is %d years old.\n",
-                *(cur_name + i), *(cur_age + i));
+                *(cur_name + i - 1), *(cur_age + i - 1));
     }
 
     // third way, pointers are just arrays
@@ -50,8 +51,9 @@ int main(int argc, char *argv[])
         printf("%s is %d years old again.\n", cur_name[i], cur_age[i]);
     }
     printf("\n--- Index notation with pointers (backwards) ---\n");
-    for (i = count - 1; i >= 0; i--) {
-        printf("%s is %d years old again.\n", cur_name[i], cur_age[i]);
+    for (i = count; i > 0; i--) {
+        printf("%s is %d years old again.\n",
+                cur_name[i - 1], cur_age[i - 1]);
     }
 
     // fourth way with pointers in a stupid complex way
