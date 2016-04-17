@@ -13,7 +13,7 @@ SHELL := /bin/sh
 
 CFLAGS := -Wall -g
 
-exercises := 1 3 7 8 9 10 11 12 13 14 15
+exercises := 1 3 7 8 9 10 11 12 13 14 15 16
 exercises := $(exercises:%=ex%)
 
 .PHONY: all clean
