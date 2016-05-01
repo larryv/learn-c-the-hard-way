@@ -47,7 +47,7 @@ void die(struct Connection *conn, const char *fmt, ...)
         perror(message);
     } else {
         vsnprintf(strchr(message, '\0'), buflen - strlen(message), fmt, ap);
-        printf("%s\n", message);
+        fprintf(stderr, "%s\n", message);
     }
 
     va_end(ap);
