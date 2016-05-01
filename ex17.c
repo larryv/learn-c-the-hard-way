@@ -5,6 +5,7 @@
 
 #include <assert.h>
 #include <errno.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,16 +31,26 @@ struct Connection {
 
 void Database_close(struct Connection *);
 
-void die(struct Connection *conn, const char *message)
+void die(struct Connection *conn, const char *fmt, ...)
 {
     Database_close(conn);
 
+    va_list ap;
+    va_start(ap, fmt);
+
+    /* This buffer length is arbitrary. */
+    const size_t buflen = 1024;
+    static char message[buflen] = "ERROR: ";
+
     if (errno) {
+        vsnprintf(message, buflen, fmt, ap);
         perror(message);
     } else {
-        printf("ERROR: %s\n", message);
+        vsnprintf(strchr(message, '\0'), buflen - strlen(message), fmt, ap);
+        printf("%s\n", message);
     }
 
+    va_end(ap);
     exit(1);
 }
 
