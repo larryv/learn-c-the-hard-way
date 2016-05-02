@@ -130,6 +130,8 @@ void Database_create(struct Connection *conn)
 void Database_set(struct Connection *conn, int id,
                   const char *name, const char *email)
 {
+    assert(id < MAX_RECORDS);
+
     struct Address *addr = &conn->db->records[id];
     if (addr->is_valid)
         die(conn, "Already set, delete it first");
@@ -149,6 +151,8 @@ void Database_set(struct Connection *conn, int id,
 
 void Database_get(struct Connection *conn, int id)
 {
+    assert(id < MAX_RECORDS);
+
     struct Address *addr = &conn->db->records[id];
     if (!addr->is_valid)
         die(conn, "ID is not set");
@@ -157,6 +161,8 @@ void Database_get(struct Connection *conn, int id)
 
 void Database_delete(struct Connection *conn, int id)
 {
+    assert(id < MAX_RECORDS);
+
     struct Address addr = {
         .id = id,
         .is_valid = 0
