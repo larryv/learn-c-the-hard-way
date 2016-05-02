@@ -183,6 +183,8 @@ int main(int argc, char *argv[])
     struct Connection *conn = Database_open(filename, action);
 
     int id = (argc > 3) ? atoi(argv[3]) : 0;
+    if (id < 0)
+        die(conn, "ID cannot be negative");
     if (id >= MAX_RECORDS)
         die(conn, "There's not that many records.");
 
